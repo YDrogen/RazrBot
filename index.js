@@ -1,4 +1,4 @@
-var token = process.argv[2]
+var token = process.env.token
 
 if(!token) {
     process.exit(1)
