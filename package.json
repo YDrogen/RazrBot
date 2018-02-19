@@ -1,0 +1,15 @@
+{
+  "name": "RazrBot",
+  "version": "1.0.0",
+  "description": "logs voice channels like Teamspeak and poke users with !poke",
+  "main": "index.js",
+  "author": "[RzN] YDrogen",
+  "license": "MIT",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/YDrogen/RazrBot"
+  },
+  "dependencies": {
+    "discord.js": "^11.3.0"
+  }
+}
