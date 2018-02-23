@@ -1,16 +1,16 @@
 {
   "name": "RazrBot",
   "version": "1.0.0",
-  "description": "logs voice channels like Teamspeak and poke users with !poke",
+  "description": "RazrBot is a Discord bot. Beep boop. He can do things most humans can't.",
   "main": "index.js",
   "author": "[RzN] YDrogen",
   "license": "MIT",
   "scripts": {
-      "start": "node index.js"
+    "start": "node index.js"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/YDrogen/RazrBot"
+    "type": "git",
+    "url": "https://github.com/YDrogen/RazrBot"
   },
   "dependencies": {
     "discord.js": "^11.3.0"

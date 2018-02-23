@@ -1,0 +1,22 @@
+{
+    "en": {
+        "just": "just ",
+        "fromChan": "moved from \"",
+        "toChan": "\" to \"",
+        "quitChan": "quit \"",
+        "joinChan": "joined \"",
+        "buggedAF": "bugged af",
+
+        "pokedYouOnChan": "poked you on "
+    ,
+    "fr": {
+        "just": "vient de ",
+        "fromChan": "passer du canal \"",
+        "toChan": "\" au canal \"",
+        "quitChan": "quitter le canal \"",
+        "joinChan": "rejoindre le canal \"",
+        "buggedAF": "bugged af",
+
+        "pokedYouOnChan": "vous a poké sur le canal "
+    }
+}
