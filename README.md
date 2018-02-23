@@ -30,13 +30,15 @@ You have to follow a few steps.
 ___
 # Heroku env variables
 -  To access them go into your Heroku app settings and click on `Reveal Config Vars`
+-  Default values are used if no env variable is defined.
+-  You need at least the token var. And the guildName if you are not my creator.
 
 | KEY | VALUE |
 | --- | ----- |
-| token | Your Discord bot token. Not the client secret. The app will stop if not set. |
+| token | Your Discord bot token. Not the client secret. The app will stop if not set. Default to nothing. Required. |
 | lang | Can be: `fr` or `en` for now. Default to `en`. |
 | guildName | Your server name. Might sound weird. But required. Default to `RazrNet` |
-| logsChannelName | The name of the channel that will contain logs |
+| logsChannelName | The name of the channel that will contain logs. Default to `logs` |
 ___
 # Keeping me up to date
 - If you're using the above method to install me, you'll have to do it again when I will update myself.
