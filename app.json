@@ -1,0 +1,6 @@
+{
+    "name": "RazrBot",
+    "description": "RazrBot is a Discord bot. Beep boop. He can do things that humans can't.",
+    "repository": "https://github.com/YDrogen/RazrBot",
+    "keywords": ["node", "razrbot", "discord"]
+}

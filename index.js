@@ -1,50 +1,65 @@
-var token = process.env.token
+// Discord bot token used to log in... Discord! Great!
+var token = process.env.token // Please enter your bot token on Heroku
+
+// L is short for Lang
+var L = process.env.lang || 'en'
+
+// Your server name
+var guildName = process.env.guildName || 'RazrNet' // PLEASE ENTER YOUR GUILD NAME ON HEROKU
+
+// The chan name where all the logs are send to
+var logsChannelName = process.env.logsChannelName || 'logs' // DO I LOOK LIKE I\'M JOKING?!
 
 if(!token) {
     process.exit(1)
 }
+
+var l = require('./lang.json')
+
+// YES YES BAD SEMANTIC OR WHATEVER I DON'T CARE BECAUSE IT LOOKS CLEANER IN THE CODE LIKE THIS
 
 const Discord = require('discord.js')
 var client = new Discord.Client()
 client.login(token)
 client.on('ready', () => {
     console.log('RazrBot ready.')
-    var guild = client.guilds.find('name', 'RazrNet')
-    if(client.channels.find('name', 'logs') === null) {
-        guild.createChannel('logs', 'text')
+    var guild = client.guilds.find('name', guildName)
+    if(client.channels.find('name', logsChannelName) === null) {
+        guild.createChannel(logsChannelName, 'text')
     }
+
+
 
     // Logs voice channel movements on the server
     client.on('voiceStateUpdate', (oldMember, newMember) => {
         let logMessage = ''
-        logMessage += "<@" + oldMember.user.id + ">"
-        logMessage += ' vient de '
+        logMessage += "<@" + oldMember.user.id + "> "
+        logMessage += l[L].just
         if(oldMember.voiceChannelID) {
             if(newMember.voiceChannelID) {
-                logMessage += 'passer du canal \"'
+                logMessage += l[L].fromChan
                 logMessage += client.channels.get(oldMember.voiceChannelID).name
-                logMessage += '\" '
-                logMessage += 'au canal \"'
+                logMessage += l[L].toChan
                 logMessage += client.channels.get(newMember.voiceChannelID).name
                 logMessage += '\".'
             } else {
-                logMessage += 'quitter le canal \"'
+                logMessage += l[L].quitChan
                 logMessage += client.channels.get(oldMember.voiceChannelID).name
                 logMessage += '\".'
             }
         } else {
             if(newMember.voiceChannelID) {
-                logMessage += 'rejoindre le canal \"'
+                logMessage += l[L].joinChan
                 logMessage += client.channels.get(newMember.voiceChannelID).name
                 logMessage += '\".'
             } else {
-                logMessage += "bugger as f*ck."
+                logMessage += l[L].buggedAF
             }
         }
         logMessage += " (" + getNow() + ")"
-        let logsChannel = client.channels.find('name', 'logs')
+        let logsChannel = client.channels.find('name', logsChannelName)
         if(logsChannel) {
-            client.channels.find('name', 'logs').send(logMessage)
+            client.channels.find('name', logsChannelName).send(logMessage)
         } else {
             console.log('\"logs\" channel not found');
         }
@@ -52,22 +67,16 @@ client.on('ready', () => {
 
     // Poke users
     client.on('message', message => {
-        if (message.content.startsWith('!poke')) {
-            let msg = message.content
-            let poker = message.author.id
-            let pokedUser
-            let userRegExp = /<@(\d{18})>/
-            if(userRegExp.test(msg)) {
-                pokedUser = userRegExp.exec(msg)
-            }
+        if (message.content.startsWith('!poke') && message.mentions && message.mentions.users) {
+            message.mentions.users.forEach(user => {
+                let pokeMessage = ''
+                pokeMessage += '<@' + message.author.id + '> '
+                pokeMessage += l[L].pokedYouOnChan
+                pokeMessage += '<#' + message.channel.id + '>'
 
-            let pokeMessage = ''
-            pokeMessage += '<@' + poker + '> '
-            pokeMessage += 'vous a poké sur le channel '
-            pokeMessage += '<#414823364532633600>'
-
-            guild.members.get(pokedUser[1]).createDM().then((DMChannel) => {
-                DMChannel.send(pokeMessage)
+                guild.members.get(user.id).createDM().then((DMChannel) => {
+                    DMChannel.send(pokeMessage)
+                })
             })
         }
     })
