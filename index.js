@@ -36,7 +36,7 @@ client.on('ready', () => {
         logMessage += "<@" + oldMember.user.id + "> "
         logMessage += l[L].just
         if(oldMember.voiceChannelID) {
-            if(newMember.voiceChannelID) {
+            if(newMember.voiceChannelID && oldMember.voiceChannelID !== newMember.voiceChannelID) {
                 logMessage += l[L].fromChan
                 logMessage += client.channels.get(oldMember.voiceChannelID).name
                 logMessage += l[L].toChan
