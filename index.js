@@ -32,16 +32,21 @@ client.on('ready', () => {
 
     // Logs voice channel movements on the server
     client.on('voiceStateUpdate', (oldMember, newMember) => {
+        let dontSendMessage = true
         let logMessage = ''
         logMessage += "<@" + oldMember.user.id + "> "
         logMessage += l[L].just
         if(oldMember.voiceChannelID) {
-            if(newMember.voiceChannelID && oldMember.voiceChannelID !== newMember.voiceChannelID) {
-                logMessage += l[L].fromChan
-                logMessage += client.channels.get(oldMember.voiceChannelID).name
-                logMessage += l[L].toChan
-                logMessage += client.channels.get(newMember.voiceChannelID).name
-                logMessage += '\".'
+            if(newMember.voiceChannelID) {
+                if(oldMember.voiceChannelID !== newMember.voiceChannelID) {
+                    logMessage += l[L].fromChan
+                    logMessage += client.channels.get(oldMember.voiceChannelID).name
+                    logMessage += l[L].toChan
+                    logMessage += client.channels.get(newMember.voiceChannelID).name
+                    logMessage += '\".'
+                } else {
+                    dontSendMessage = false
+                }
             } else {
                 logMessage += l[L].quitChan
                 logMessage += client.channels.get(oldMember.voiceChannelID).name
@@ -57,11 +62,15 @@ client.on('ready', () => {
             }
         }
         logMessage += " (" + getNow() + ")"
-        let logsChannel = client.channels.find('name', logsChannelName)
-        if(logsChannel) {
-            client.channels.find('name', logsChannelName).send(logMessage)
+        if(dontSendMessage) {
+            let logsChannel = client.channels.find('name', logsChannelName)
+            if(logsChannel) {
+                client.channels.find('name', logsChannelName).send(logMessage)
+            } else {
+                console.log('\"logs\" channel not found');
+            }
         } else {
-            console.log('\"logs\" channel not found');
+            console.log('nothing to send')
         }
     })
 
