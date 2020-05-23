@@ -34,7 +34,7 @@ client.on('ready', () => {
     client.on('voiceStateUpdate', (oldMember, newMember) => {
         let dontSendMessage = true
         let logMessage = ''
-        logMessage += "<@" + oldMember.user.id + "> "
+        logMessage += oldMember.user.username + " "
         logMessage += l[L].just
         if(oldMember.voiceChannelID) {
             if(newMember.voiceChannelID) {
