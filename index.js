@@ -10,7 +10,7 @@ var guildName = process.env.guildName || 'RazrNet' // PLEASE ENTER YOUR GUILD NA
 // The chan name where all the logs are send to
 var logsChannelName = process.env.logsChannelName || 'logs' // DO I LOOK LIKE I\'M JOKING?!
 
-if(!token) {
+if (!token) {
     process.exit(1)
 }
 
@@ -24,7 +24,7 @@ client.login(token)
 client.on('ready', () => {
     console.log('RazrBot ready.')
     var guild = client.guilds.find('name', guildName)
-    if(client.channels.find('name', logsChannelName) === null) {
+    if (client.channels.find('name', logsChannelName) === null) {
         guild.createChannel(logsChannelName, 'text')
     }
 
@@ -36,9 +36,9 @@ client.on('ready', () => {
         let logMessage = ''
         logMessage += oldMember.user.username + " "
         logMessage += l[L].just
-        if(oldMember.voiceChannelID) {
-            if(newMember.voiceChannelID) {
-                if(oldMember.voiceChannelID !== newMember.voiceChannelID) {
+        if (oldMember.voiceChannelID) {
+            if (newMember.voiceChannelID) {
+                if (oldMember.voiceChannelID !== newMember.voiceChannelID) {
                     logMessage += l[L].fromChan
                     logMessage += client.channels.get(oldMember.voiceChannelID).name
                     logMessage += l[L].toChan
@@ -53,7 +53,7 @@ client.on('ready', () => {
                 logMessage += '\".'
             }
         } else {
-            if(newMember.voiceChannelID) {
+            if (newMember.voiceChannelID) {
                 logMessage += l[L].joinChan
                 logMessage += client.channels.get(newMember.voiceChannelID).name
                 logMessage += '\".'
@@ -62,9 +62,9 @@ client.on('ready', () => {
             }
         }
         logMessage += " (" + getNow() + ")"
-        if(dontSendMessage) {
+        if (dontSendMessage) {
             let logsChannel = client.channels.find('name', logsChannelName)
-            if(logsChannel) {
+            if (logsChannel) {
                 client.channels.find('name', logsChannelName).send(logMessage)
             } else {
                 console.log('\"logs\" channel not found');
@@ -99,19 +99,19 @@ function getNow() {
     let hours = date.getHours()
     let minutes = date.getMinutes()
     let seconds = date.getSeconds()
-    if(day < 10) {
+    if (day < 10) {
         day = '0' + day
     }
-    if(month < 10) {
+    if (month < 10) {
         month = '0' + month
     }
-    if(hours < 10) {
+    if (hours < 10) {
         hours = '0' + hours
     }
-    if(minutes < 10) {
+    if (minutes < 10) {
         minutes = '0' + minutes
     }
-    if(seconds < 10) {
+    if (seconds < 10) {
         seconds = '0' + seconds
     }
 
