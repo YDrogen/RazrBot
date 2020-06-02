@@ -88,6 +88,56 @@ client.on('ready', () => {
                 })
             })
         }
+
+        if (message.content.startsWith('!hl')) {
+            let miaChannel = client.channels.find('id', '715172783906226226');
+
+            if (miaChannel) {
+                if (message.content.toLowerCase().startsWith('!hl r')) {
+                    miaChannel.send('https://forum.homelife-roleplay.fr/threads/r%C3%A8glement-g%C3%A9n%C3%A9ral.18179/')
+                }
+
+                if (message.content.startsWith('!hl rg')) {
+                    miaChannel.send('https://forum.homelife-roleplay.fr/threads/informations-relatives-aux-gangs.18987/')
+                }
+
+                if (message.content.startsWith('!hl tel')) {
+                    miaChannel.send('https://forum.homelife-roleplay.fr/threads/les-ic%C3%B4nes-des-services-publics-sur-votre-t%C3%A9l%C3%A9phone.24713/')
+                }
+
+                if (message.content.startsWith('!hl res')) {
+                    miaChannel.send('https://forum.homelife-roleplay.fr/threads/tutoriel-des-ressources.22364/')
+                }
+
+                if (message.content.startsWith('!hl info')) {
+                    miaChannel.send('https://forum.homelife-roleplay.fr/forums/informations-utiles.58/')
+                }
+
+                if (message.content.startsWith('!hl forum')) {
+                    miaChannel.send('https://forum.homelife-roleplay.fr/')
+                }
+
+                if (message.content.startsWith('!hl perso')) {
+                    miaChannel.send('https://www.homelife-roleplay.fr/backend/mon-profil')
+                }
+
+                if (message.content.startsWith('!hl help')) {
+                    miaChannel.send(`
+                    \`!hl help\` : Affiche ce message\n
+                    \`!hl r\` : Règlement\n
+                    \`!hl rg\` : Règlement des gangs\n
+                    \`!hl tel\` : Icônes du téléphone\n
+                    \`!hl res\` : Ressources\n
+                    \`!hl info\` : Section Informations Utiles\n
+                    \`!hl forum\` : Forum\n
+                    \`!hl perso\` : Page personnelle\n
+                    `)
+                }
+            } else {
+                console.log('MIA channel not found')
+            }
+
+        }
     })
 })
 
