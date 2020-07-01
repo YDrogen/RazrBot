@@ -72,7 +72,7 @@ client.on('ready', () => {
         } else {
             console.log('nothing to send')
         }
-    })
+    });
 
     // Poke users
     client.on('message', message => {
@@ -90,52 +90,53 @@ client.on('ready', () => {
         }
 
         if (message.content.startsWith('!hl')) {
-                if (message.content.toLowerCase().startsWith('!hl r')) {
-                    message.reply('https://forum.homelife-roleplay.fr/threads/r%C3%A8glement-g%C3%A9n%C3%A9ral.18179/')
-                }
-
-                if (message.content.startsWith('!hl rg')) {
-                    message.reply('https://forum.homelife-roleplay.fr/threads/informations-relatives-aux-gangs.18987/')
-                }
-
-                if (message.content.startsWith('!hl tel')) {
-                    message.reply('https://forum.homelife-roleplay.fr/threads/les-ic%C3%B4nes-des-services-publics-sur-votre-t%C3%A9l%C3%A9phone.24713/')
-                }
-
-                if (message.content.startsWith('!hl res')) {
-                    message.reply('https://forum.homelife-roleplay.fr/threads/tutoriel-des-ressources.22364/')
-                }
-
-                if (message.content.startsWith('!hl info')) {
-                    message.reply('https://forum.homelife-roleplay.fr/forums/informations-utiles.58/')
-                }
-
-                if (message.content.startsWith('!hl forum')) {
-                    message.reply('https://forum.homelife-roleplay.fr/')
-                }
-
-                if (message.content.startsWith('!hl perso')) {
-                    message.reply('https://www.homelife-roleplay.fr/backend/mon-profil')
-                }
-
-                if (message.content.startsWith('!hl help')) {
-                    const br = '\n';
-                    message.reply(
-                        '`!hl help` : Affiche ce message' + br +
-                        '`!hl r` : Règlement' + br +
-                        '`!hl rg` : Règlement des gangs' + br +
-                        '`!hl tel` : Icônes du téléphone' + br +
-                        '`!hl res` : Ressources' + br +
-                        '`!hl info` : Section Informations Utiles' + br +
-                        '`!hl forum` : Forum' + br +
-                        '`!hl perso` : Page personnelle'
-                    );
-                }
+            if (message.content.toLowerCase().startsWith('!hl r')) {
+                message.reply('https://forum.homelife-roleplay.fr/threads/r%C3%A8glement-g%C3%A9n%C3%A9ral.18179/')
             }
 
+            if (message.content.startsWith('!hl rg')) {
+                message.reply('https://forum.homelife-roleplay.fr/threads/informations-relatives-aux-gangs.18987/')
+            }
+
+            if (message.content.startsWith('!hl tel')) {
+                message.reply('https://forum.homelife-roleplay.fr/threads/les-ic%C3%B4nes-des-services-publics-sur-votre-t%C3%A9l%C3%A9phone.24713/')
+            }
+
+            if (message.content.startsWith('!hl res')) {
+                message.reply('https://forum.homelife-roleplay.fr/threads/tutoriel-des-ressources.22364/')
+            }
+
+            if (message.content.startsWith('!hl info')) {
+                message.reply('https://forum.homelife-roleplay.fr/forums/informations-utiles.58/')
+            }
+
+            if (message.content.startsWith('!hl forum')) {
+                message.reply('https://forum.homelife-roleplay.fr/')
+            }
+
+            if (message.content.startsWith('!hl perso')) {
+                message.reply('https://www.homelife-roleplay.fr/backend/mon-profil')
+            }
+
+            if (message.content.startsWith('!hl help')) {
+                const br = '\n';
+                message.reply(
+                    '`!hl help` : Affiche ce message' + br +
+                    '`!hl r` : Règlement' + br +
+                    '`!hl rg` : Règlement des gangs' + br +
+                    '`!hl tel` : Icônes du téléphone' + br +
+                    '`!hl res` : Ressources' + br +
+                    '`!hl info` : Section Informations Utiles' + br +
+                    '`!hl forum` : Forum' + br +
+                    '`!hl perso` : Page personnelle'
+                );
+            }
         }
-    })
-})
+
+    });
+});
+
+
 
 function getNow() {
     let date = new Date()
