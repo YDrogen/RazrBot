@@ -90,7 +90,7 @@ client.on('ready', () => {
         }
 
         if (message.content.startsWith('!hl')) {
-            let miaChannel = client.channels.find('id', '715172783906226226');
+            let miaChannel = message.channel.id;
 
             if (miaChannel) {
                 if (message.content.toLowerCase().startsWith('!hl r')) {
@@ -122,16 +122,17 @@ client.on('ready', () => {
                 }
 
                 if (message.content.startsWith('!hl help')) {
-                    miaChannel.send(`
-                    \`!hl help\` : Affiche ce message\n
-                    \`!hl r\` : Règlement\n
-                    \`!hl rg\` : Règlement des gangs\n
-                    \`!hl tel\` : Icônes du téléphone\n
-                    \`!hl res\` : Ressources\n
-                    \`!hl info\` : Section Informations Utiles\n
-                    \`!hl forum\` : Forum\n
-                    \`!hl perso\` : Page personnelle\n
-                    `)
+                    const br = '\n';
+                    miaChannel.send(
+                        '`!hl help` : Affiche ce message' + br +
+                        '`!hl r` : Règlement' + br +
+                        '`!hl rg` : Règlement des gangs' + br +
+                        '`!hl tel` : Icônes du téléphone' + br +
+                        '`!hl res` : Ressources' + br +
+                        '`!hl info` : Section Informations Utiles' + br +
+                        '`!hl forum` : Forum' + br +
+                        '`!hl perso` : Page personnelle'
+                    );
                 }
             } else {
                 console.log('MIA channel not found')
