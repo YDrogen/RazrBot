@@ -120,7 +120,7 @@ client.on('ready', () => {
 
             if (message.content.startsWith('!hl help')) {
                 const br = '\n';
-                message.reply(
+                message.reply( br +
                     '`!hl help` : Affiche ce message' + br +
                     '`!hl r` : Règlement' + br +
                     '`!hl rg` : Règlement des gangs' + br +
