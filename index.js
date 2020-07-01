@@ -90,40 +90,37 @@ client.on('ready', () => {
         }
 
         if (message.content.startsWith('!hl')) {
-            let miaChannel = message.channel.id;
-
-            if (miaChannel) {
                 if (message.content.toLowerCase().startsWith('!hl r')) {
-                    miaChannel.send('https://forum.homelife-roleplay.fr/threads/r%C3%A8glement-g%C3%A9n%C3%A9ral.18179/')
+                    message.reply('https://forum.homelife-roleplay.fr/threads/r%C3%A8glement-g%C3%A9n%C3%A9ral.18179/')
                 }
 
                 if (message.content.startsWith('!hl rg')) {
-                    miaChannel.send('https://forum.homelife-roleplay.fr/threads/informations-relatives-aux-gangs.18987/')
+                    message.reply('https://forum.homelife-roleplay.fr/threads/informations-relatives-aux-gangs.18987/')
                 }
 
                 if (message.content.startsWith('!hl tel')) {
-                    miaChannel.send('https://forum.homelife-roleplay.fr/threads/les-ic%C3%B4nes-des-services-publics-sur-votre-t%C3%A9l%C3%A9phone.24713/')
+                    message.reply('https://forum.homelife-roleplay.fr/threads/les-ic%C3%B4nes-des-services-publics-sur-votre-t%C3%A9l%C3%A9phone.24713/')
                 }
 
                 if (message.content.startsWith('!hl res')) {
-                    miaChannel.send('https://forum.homelife-roleplay.fr/threads/tutoriel-des-ressources.22364/')
+                    message.reply('https://forum.homelife-roleplay.fr/threads/tutoriel-des-ressources.22364/')
                 }
 
                 if (message.content.startsWith('!hl info')) {
-                    miaChannel.send('https://forum.homelife-roleplay.fr/forums/informations-utiles.58/')
+                    message.reply('https://forum.homelife-roleplay.fr/forums/informations-utiles.58/')
                 }
 
                 if (message.content.startsWith('!hl forum')) {
-                    miaChannel.send('https://forum.homelife-roleplay.fr/')
+                    message.reply('https://forum.homelife-roleplay.fr/')
                 }
 
                 if (message.content.startsWith('!hl perso')) {
-                    miaChannel.send('https://www.homelife-roleplay.fr/backend/mon-profil')
+                    message.reply('https://www.homelife-roleplay.fr/backend/mon-profil')
                 }
 
                 if (message.content.startsWith('!hl help')) {
                     const br = '\n';
-                    miaChannel.send(
+                    message.reply(
                         '`!hl help` : Affiche ce message' + br +
                         '`!hl r` : Règlement' + br +
                         '`!hl rg` : Règlement des gangs' + br +
@@ -134,8 +131,6 @@ client.on('ready', () => {
                         '`!hl perso` : Page personnelle'
                     );
                 }
-            } else {
-                console.log('MIA channel not found')
             }
 
         }
